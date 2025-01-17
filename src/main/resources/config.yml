@@ -1,0 +1,45 @@
+Boses:
+  Demonios1:
+    mundo: "hardcore"
+    quantidade: "5"
+    mob: "WARDEN"
+    vida: "700"
+    forca: "100"
+    nameTag: "Demonio Vermelho"
+    timespawn: "20" # minutos
+  Demonios2:
+    mundo: "hardcore"
+    quantidade: "5"
+    mob: "WARDEN"
+    vida: "700"
+    forca: "100"
+    nameTag: "Demonio Cinza"
+    timespawn: "20" # minutos
+  Demonios3:
+    mundo: "world_the_end"
+    quantidade: "1"
+    mob: "WITHER"
+    vida: "2048"
+    forca: "2048"
+    nameTag: "Wither Storm"
+    timespawn: "30" # minutos
+
+Raid:
+  Demonios1:
+    mundo: "hardcore"
+    mob: "ZOMBIE"
+    vida: "2048"
+    forca: "750"
+    nameTag:
+      - "tobi"
+      - "zetsu"
+      - "hidan"
+      - "deidara"
+      - "kakuzu"
+      - "kisame"
+      - "konan"
+      - "sasori"
+      - "orochimaru"
+      - "itachi"
+      - "pain"
+    timespawn: "30" # minutos

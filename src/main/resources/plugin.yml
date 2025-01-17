@@ -1,0 +1,7 @@
+name: legendary_boss_system
+version: '1.0.0'
+main: www.legendarycommunity.com.br.legendary_boss_system.Legendary_boss_system
+api-version: '1.21'
+authors: [ Thaynison ]
+description: Plugin Legendary Community
+website: http://www.legendarycommunity.com.br
