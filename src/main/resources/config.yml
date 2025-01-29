@@ -3,26 +3,18 @@ Boses:
     mundo: "hardcore"
     quantidade: "5"
     mob: "WARDEN"
-    vida: "700"
-    forca: "100"
+    vida: "1500"
+    forca: "1200"
     nameTag: "Demonio Vermelho"
-    timespawn: "20" # minutos
+    timespawn: "5" # minutos
   Demonios2:
     mundo: "hardcore"
     quantidade: "5"
     mob: "WARDEN"
-    vida: "700"
-    forca: "100"
+    vida: "1500"
+    forca: "1200"
     nameTag: "Demonio Cinza"
-    timespawn: "20" # minutos
-  Demonios3:
-    mundo: "world_the_end"
-    quantidade: "1"
-    mob: "WITHER"
-    vida: "2048"
-    forca: "2048"
-    nameTag: "Wither Storm"
-    timespawn: "30" # minutos
+    timespawn: "5" # minutos
 
 Raid:
   Demonios1:
@@ -42,4 +34,139 @@ Raid:
       - "orochimaru"
       - "itachi"
       - "pain"
-    timespawn: "30" # minutos
+    timespawn: "480" # minutos
+
+MobsSystem:
+  Fada1:
+    mob: ZOMBIE
+    vida: 50
+    forca: 2
+    nameTag: fada
+
+Boss:
+  Mandamento1:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "derieri"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Derieri"
+      item: "PAPER"
+  Mandamento2:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "drole"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Drole"
+      item: "PAPER"
+  Mandamento3:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "estarossa"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Estarossa"
+      item: "PAPER"
+  Mandamento4:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "fraudrin"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Fraudrin"
+      item: "PAPER"
+  Mandamento5:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "galand"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Galand"
+      item: "PAPER"
+  Mandamento6:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "gloxinia"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Gloxinia"
+      item: "PAPER"
+  Mandamento7:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "gowther"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Gowther"
+      item: "PAPER"
+  Mandamento8:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "melascula"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Melascula"
+      item: "PAPER"
+  Mandamento9:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "monspiet"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Monspiet"
+      item: "PAPER"
+  Mandamento10:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "zeldris"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Zeldris"
+      item: "PAPER"
+  Arcanjo1:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "mael"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Mael"
+      item: "PAPER"
+  Arcanjo2:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "ryudoshel"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Ryudoshel"
+      item: "PAPER"
+  Arcanjo3:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "sariel"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Sariel"
+      item: "PAPER"
+  Arcanjo4:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17785 70 -234782"
+    nameTag: "tarmiel"
+    itemUseSpawn:
+      nameTag: "Spawn Boss Tarmiel"
+      item: "PAPER"

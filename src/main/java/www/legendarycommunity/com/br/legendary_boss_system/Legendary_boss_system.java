@@ -1,18 +1,23 @@
 package www.legendarycommunity.com.br.legendary_boss_system;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import www.legendarycommunity.com.br.legendary_boss_system.mobsSystem.BlockBreakListener;
+import www.legendarycommunity.com.br.legendary_boss_system.mobsSystem.spawnMandamentos;
 
 import java.util.*;
 
@@ -21,6 +26,7 @@ public final class Legendary_boss_system extends JavaPlugin {
     // Armazena o tempo do último ataque aos mobs
     private final Map<Mob, Long> lastAttackedTime = new HashMap<>();
 
+
     @Override
     public void onEnable() {
         // Salva o config.yml padrão, se não existir
@@ -28,7 +34,9 @@ public final class Legendary_boss_system extends JavaPlugin {
         getLogger().info("Legendary Boss System iniciado!");
         spawnBossesFromConfig();
         spawnRaidFromConfig();
+        new spawnMandamentos(this);
         // Agendamos a verificação dos mobs
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(this), this);
         startMobCleanupTask();
     }
 
@@ -70,16 +78,48 @@ public final class Legendary_boss_system extends JavaPlugin {
                             mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(vida);
                             mob.setHealth(vida);
                             mob.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(forca);
+                            mob.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(forca);
+                            mob.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(1);
+
+
+
                             mob.setCustomName(nameTag);
                             mob.setCustomNameVisible(true);
 
                             lastAttackedTime.put(mob, System.currentTimeMillis());
+                            bossMobs.add(mob.getUniqueId());
                         }
                     });
                 }
             }.runTaskTimer(this, 0, timeSpawnMinutes * 60 * 20L); // Converte minutos para ticks
         }
     }
+
+    private final Set<UUID> bossMobs = new HashSet<>();
+
+    @EventHandler
+    public void onBossDamagePlayer(EntityDamageByEntityEvent event) {
+        if (!(event.getDamager() instanceof Mob) || !(event.getEntity() instanceof Player)) return;
+
+        Mob boss = (Mob) event.getDamager();
+        Player player = (Player) event.getEntity();
+
+        // Verifica se o mob é um boss
+        if (!bossMobs.contains(boss.getUniqueId())) return;
+
+        // Gera um número aleatório entre 1 e 100
+        double randomChance = Math.random() * 100;
+
+        // Se o número for menor ou igual a 20, aplica o hitkill
+        if (randomChance <= 20) {
+            player.setHealth(0); // Mata o jogador instantaneamente
+        } else {
+            // Aplica o dano normal, caso não seja hitkill
+            double additionalDamage = 10.0; // Dano adicional (ajuste conforme necessário)
+            event.setDamage(event.getDamage() + additionalDamage);
+        }
+    }
+
 
     private Location getNearbyLocation(Location playerLocation, int radius) {
         double xOffset = (Math.random() * radius * 2) - radius;
