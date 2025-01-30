@@ -111,7 +111,7 @@ public class spawnMandamentos implements Listener {
             zombie.setHealth(vida);
             zombie.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(forca);
             zombie.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(forca);
-            zombie.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(1);
+            zombie.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.5);
 
 
 
@@ -151,7 +151,7 @@ public class spawnMandamentos implements Listener {
         double randomChance = Math.random() * 100;
 
         // Se o número for menor ou igual a 20, aplica o hitkill
-        if (randomChance <= 20) {
+        if (randomChance <= 1) {
             player.setHealth(0); // Mata o jogador instantaneamente
         } else {
             // Aplica o dano normal, caso não seja hitkill

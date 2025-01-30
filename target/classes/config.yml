@@ -39,8 +39,8 @@ Raid:
 MobsSystem:
   Fada1:
     mob: ZOMBIE
-    vida: 50
-    forca: 2
+    vida: 1024
+    forca: 550
     nameTag: fada
 
 Boss:
