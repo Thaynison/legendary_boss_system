@@ -84,8 +84,6 @@ public class spawnMandamentos implements Listener {
         }
     }
 
-
-
     private void spawnBoss(String mandamento, Location playerLocation) {
         // Pega as informações do boss no config
         String mobType = plugin.getConfig().getString("Boss." + mandamento + ".mob");
@@ -113,12 +111,8 @@ public class spawnMandamentos implements Listener {
             zombie.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(forca);
             zombie.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.5);
 
-
-
             zombie.setCustomName(nameTag);
             zombie.setCustomNameVisible(true);
-
-
 
             zombie.setBaby(false);
             zombie.getEquipment().setHelmet(null);  // Remove o capacete
@@ -150,13 +144,11 @@ public class spawnMandamentos implements Listener {
         // Gera um número aleatório entre 1 e 100
         double randomChance = Math.random() * 100;
 
-        // Se o número for menor ou igual a 20, aplica o hitkill
-        if (randomChance <= 1) {
-            player.setHealth(0); // Mata o jogador instantaneamente
-        } else {
-            // Aplica o dano normal, caso não seja hitkill
-            double additionalDamage = 10.0; // Dano adicional (ajuste conforme necessário)
-            event.setDamage(event.getDamage() + additionalDamage);
+        // Se a chance for menor ou igual a 20, remove 4 corações (8 pontos de vida)
+        if (randomChance <= 5) {
+            double newHealth = Math.max(player.getHealth() - 10, 0); // Garante que a vida não fique negativa
+            player.setHealth(newHealth);
+            event.setDamage(0); // Cancela o dano normal do evento, já que aplicamos dano direto
         }
     }
 

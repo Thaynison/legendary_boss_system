@@ -16,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import www.legendarycommunity.com.br.legendary_boss_system.mobs.dropsModifyMobs;
 import www.legendarycommunity.com.br.legendary_boss_system.mobsSystem.BlockBreakListener;
 import www.legendarycommunity.com.br.legendary_boss_system.mobsSystem.spawnMandamentos;
 
@@ -37,6 +38,8 @@ public final class Legendary_boss_system extends JavaPlugin {
         new spawnMandamentos(this);
         // Agendamos a verificação dos mobs
         getServer().getPluginManager().registerEvents(new BlockBreakListener(this), this);
+        getServer().getPluginManager().registerEvents(new dropsModifyMobs(this), this);
+
         startMobCleanupTask();
     }
 
@@ -101,25 +104,22 @@ public final class Legendary_boss_system extends JavaPlugin {
     public void onBossDamagePlayer(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Mob) || !(event.getEntity() instanceof Player)) return;
 
-        Mob boss = (Mob) event.getDamager();
+        Mob zombie = (Mob) event.getDamager();
         Player player = (Player) event.getEntity();
 
         // Verifica se o mob é um boss
-        if (!bossMobs.contains(boss.getUniqueId())) return;
+        if (!bossMobs.contains(zombie.getUniqueId())) return;
 
         // Gera um número aleatório entre 1 e 100
         double randomChance = Math.random() * 100;
 
-        // Se o número for menor ou igual a 20, aplica o hitkill
-        if (randomChance <= 1) {
-            player.setHealth(0); // Mata o jogador instantaneamente
-        } else {
-            // Aplica o dano normal, caso não seja hitkill
-            double additionalDamage = 10.0; // Dano adicional (ajuste conforme necessário)
-            event.setDamage(event.getDamage() + additionalDamage);
+        // Se a chance for menor ou igual a 20, remove 4 corações (8 pontos de vida)
+        if (randomChance <= 5) {
+            double newHealth = Math.max(player.getHealth() - 8, 0); // Garante que a vida não fique negativa
+            player.setHealth(newHealth);
+            event.setDamage(0); // Cancela o dano normal do evento, já que aplicamos dano direto
         }
     }
-
 
     private Location getNearbyLocation(Location playerLocation, int radius) {
         double xOffset = (Math.random() * radius * 2) - radius;

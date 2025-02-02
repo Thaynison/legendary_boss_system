@@ -15,6 +15,15 @@ Boses:
     forca: "1200"
     nameTag: "Demonio Cinza"
     timespawn: "5" # minutos
+  Demonios3:
+    mundo: "hardcore"
+    quantidade: "10"
+    mob: "PHANTOM"
+    vida: "2048"
+    forca: "1900"
+    nameTag: "Arcanus"
+    timespawn: "18" # minutos
+
 
 Raid:
   Demonios1:
@@ -170,3 +179,11 @@ Boss:
     itemUseSpawn:
       nameTag: "Spawn Boss Tarmiel"
       item: "PAPER"
+
+Drops:
+  1:
+    mob: "PHANTOM"
+    mobNameTag: "Arcanus"
+    itemDrop: "NETHER_STAR"
+    itemDisplayName: "Estrela da Sorte"
+    chanceDrop: 0.001

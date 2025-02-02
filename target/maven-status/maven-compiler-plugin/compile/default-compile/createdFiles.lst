@@ -2,6 +2,7 @@ www\legendarycommunity\com\br\legendary_boss_system\Legendary_boss_system.class
 www\legendarycommunity\com\br\legendary_boss_system\mobsSystem\BlockBreakListener.class
 www\legendarycommunity\com\br\legendary_boss_system\mobsSystem\spawnMandamentos.class
 www\legendarycommunity\com\br\legendary_boss_system\Legendary_boss_system$1.class
+www\legendarycommunity\com\br\legendary_boss_system\mobs\dropsModifyMobs.class
 www\legendarycommunity\com\br\legendary_boss_system\Legendary_boss_system$3.class
 www\legendarycommunity\com\br\legendary_boss_system\Legendary_boss_system$2.class
 www\legendarycommunity\com\br\legendary_boss_system\mobsSystem\fada.class
