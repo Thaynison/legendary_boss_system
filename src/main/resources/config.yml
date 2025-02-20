@@ -20,7 +20,7 @@ Boses:
     quantidade: "10"
     mob: "PHANTOM"
     vida: "2048"
-    forca: "1900"
+    forca: "14000"
     nameTag: "Arcanus"
     timespawn: "18" # minutos
 
@@ -186,4 +186,4 @@ Drops:
     mobNameTag: "Arcanus"
     itemDrop: "NETHER_STAR"
     itemDisplayName: "Estrela da Sorte"
-    chanceDrop: 0.001
+    chanceDrop: 0.9
