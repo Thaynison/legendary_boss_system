@@ -3,10 +3,7 @@ package www.legendarycommunity.com.br.legendary_boss_system;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Mob;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -19,6 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import www.legendarycommunity.com.br.legendary_boss_system.mobs.dropsModifyMobs;
 import www.legendarycommunity.com.br.legendary_boss_system.mobsSystem.BlockBreakListener;
 import www.legendarycommunity.com.br.legendary_boss_system.mobsSystem.spawnMandamentos;
+import www.legendarycommunity.com.br.legendary_boss_system.mobsSystem.spawnPecados;
 
 import java.util.*;
 
@@ -26,21 +24,25 @@ public final class Legendary_boss_system extends JavaPlugin {
 
     // Armazena o tempo do último ataque aos mobs
     private final Map<Mob, Long> lastAttackedTime = new HashMap<>();
-
+    private final Set<UUID> bossMobs = new HashSet<>();
 
     @Override
     public void onEnable() {
         // Salva o config.yml padrão, se não existir
         saveDefaultConfig();
         getLogger().info("Legendary Boss System iniciado!");
+
         spawnBossesFromConfig();
         spawnRaidFromConfig();
+
         new spawnMandamentos(this);
+        new spawnPecados(this);
         // Agendamos a verificação dos mobs
         getServer().getPluginManager().registerEvents(new BlockBreakListener(this), this);
         getServer().getPluginManager().registerEvents(new dropsModifyMobs(this), this);
 
         startMobCleanupTask();
+        startBossTargetTask(); // Inicia a busca por jogadores próximos
     }
 
     @Override
@@ -98,7 +100,38 @@ public final class Legendary_boss_system extends JavaPlugin {
         }
     }
 
-    private final Set<UUID> bossMobs = new HashSet<>();
+    private void startBossTargetTask() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (UUID bossId : bossMobs) {
+                    Entity entity = Bukkit.getEntity(bossId);
+                    if (entity instanceof Mob) {
+                        Mob boss = (Mob) entity;
+                        Player nearestPlayer = getNearestPlayer(boss);
+                        if (nearestPlayer != null) {
+                            boss.setTarget(nearestPlayer);
+                        }
+                    }
+                }
+            }
+        }.runTaskTimer(this, 0, 20L); // Executa a cada segundo (20 ticks)
+    }
+
+    private Player getNearestPlayer(Mob boss) {
+        double minDistance = Double.MAX_VALUE;
+        Player nearestPlayer = null;
+
+        for (Player player : boss.getWorld().getPlayers()) {
+            double distance = player.getLocation().distance(boss.getLocation());
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestPlayer = player;
+            }
+        }
+        return nearestPlayer;
+    }
+
 
     @EventHandler
     public void onBossDamagePlayer(EntityDamageByEntityEvent event) {

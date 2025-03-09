@@ -180,10 +180,54 @@ Boss:
       nameTag: "Spawn Boss Tarmiel"
       item: "PAPER"
 
+Pecados:
+  1:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17310 101 -235868"
+    nameTag: "ban"
+  2:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17310 101 -235868"
+    nameTag: "escanor"
+  3:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17310 101 -235868"
+    nameTag: "merlin"
+  4:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17310 101 -235868"
+    nameTag: "gowther"
+  5:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17310 101 -235868"
+    nameTag: "meliodas"
+  6:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17310 101 -235868"
+    nameTag: "diane"
+  7:
+    mob: "ZOMBIE"
+    vida: 2048
+    forca: 2048
+    spawnCoord: "-17310 101 -235868"
+    nameTag: "king"
+
 Drops:
   1:
     mob: "PHANTOM"
     mobNameTag: "Arcanus"
     itemDrop: "NETHER_STAR"
     itemDisplayName: "Estrela da Sorte"
-    chanceDrop: 0.9
+    chanceDrop: 10

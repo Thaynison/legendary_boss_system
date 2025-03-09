@@ -1,5 +1,6 @@
 package www.legendarycommunity.com.br.legendary_boss_system.mobs;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
@@ -50,7 +51,7 @@ public class dropsModifyMobs implements Listener {
                                     // Alterar o nome do item
                                     ItemMeta meta = item.getItemMeta();
                                     if (meta != null) {
-                                        meta.setDisplayName(displayName);
+                                        meta.setDisplayName(ChatColor.RED + displayName);
                                         item.setItemMeta(meta);  // Aplica o ItemMeta alterado no ItemStack
                                     }
 
